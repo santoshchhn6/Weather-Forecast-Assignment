@@ -39,7 +39,7 @@ const City = () => {
   }, [currentPage]);
 
   return (
-    <div className="w-[100%]  md:w-[80%] mx-auto p-3">
+    <div className="w-[100%] min-h-[100vh] md:w-[80%] mx-auto p-3">
       <button
         onClick={() => {
           setCurrentPage(currentPage + 1);

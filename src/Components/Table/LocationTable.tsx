@@ -3,10 +3,11 @@ import { COLUMNS } from "./column.js";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store.js";
 import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LocationTable = () => {
   const { locations } = useSelector((state: RootState) => state.locations);
-
+  const navigate = useNavigate();
   const columns = useMemo(() => COLUMNS, []);
   const tableData = useMemo(
     () =>
@@ -28,17 +29,20 @@ const LocationTable = () => {
     data: tableData,
   });
 
+  const handleCellClick = (value, row) => {
+    // console.log("Clicked cell value:", value, "Row data:", row.original);
+    // console.log(row.original.name);
+    navigate(`/weather/${row.original.name}`);
+  };
+
   return (
-    <div className="w-[100%] h-[400px] overflow-y-auto text-center">
+    <div className="w-[100%] h-[400px] bg-slate-200  overflow-y-auto text-center">
       <table {...getTableProps()} className="w-full text-slate-800">
-        <thead>
+        <thead className="bg-slate-300">
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  className="p-3 border border-slate-600 bg-slate-200"
-                >
+                <th {...column.getHeaderProps()} className="p-3 ">
                   {column.render("Header")}
                 </th>
               ))}
@@ -51,13 +55,15 @@ const LocationTable = () => {
             return (
               <tr
                 {...row.getRowProps()}
-                className="hover:bg-slate-200 cursor-pointer"
+                className="hover:bg-slate-300 cursor-pointer"
               >
                 {row.cells.map((cell) => {
                   return (
                     <td
-                      {...cell.getCellProps()}
-                      className="p-3 border border-slate-600"
+                      {...cell.getCellProps({
+                        onClick: () => handleCellClick(cell.value, row),
+                      })}
+                      className="p-3"
                     >
                       {cell.render("Cell")}
                     </td>

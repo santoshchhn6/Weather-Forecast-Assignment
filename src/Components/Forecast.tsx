@@ -4,7 +4,6 @@ import { getTemp } from "../utils/convertTemp";
 import { RootState } from "../redux/store";
 import { getWeekDay } from "../utils/getWeekDay";
 import { getTime } from "../utils/getTime";
-import { useState } from "react";
 import { setForecastTime } from "../redux/appSlice";
 
 type Props = {

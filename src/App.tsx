@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<City />} />
-          <Route path="/weather" element={<Weather />} />
+          <Route path="/weather/:city" element={<Weather />} />
         </Route>
       </Routes>
     </BrowserRouter>

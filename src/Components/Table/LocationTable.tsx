@@ -7,7 +7,6 @@ import { useMemo } from "react";
 const LocationTable = () => {
   const { locations } = useSelector((state: RootState) => state.locations);
 
-  console.log(locations);
   const columns = useMemo(() => COLUMNS, []);
   const tableData = useMemo(
     () =>

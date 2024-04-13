@@ -1,4 +1,4 @@
-export type City = {
+export type LocationType = {
   geoname_id: string;
   name: string;
   ascii_name: string;

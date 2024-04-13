@@ -1,12 +1,19 @@
-import LocationTable from "./Components/LocationTable";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
+import Layout from "./Layout";
+import City from "./Pages/City";
+import Weather from "./Pages/Weather";
 
 function App() {
   return (
-    <div>
-      hi
-      <LocationTable />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<City />} />
+          <Route path="/weather" element={<Weather />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

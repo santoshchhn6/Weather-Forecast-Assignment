@@ -9,6 +9,8 @@ import Forecast from "../Components/Forecast";
 import { getTemp } from "../utils/convertTemp";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { getWeekDay } from "../utils/getWeekDay";
+import { getTime } from "../utils/getTime";
 
 const Weather = () => {
   const { city } = useParams();
@@ -35,13 +37,20 @@ const Weather = () => {
 const Location = ({ data }) => {
   return (
     <div>
-      <div className="flex text-3xl font-semibold">
-        <p>{data?.name}</p>
-        <p>, {data?.sys.country}</p>
+      <div className="flex justify-between mt-3 text-3xl ">
+        <div className="flex">
+          <p>{data?.name}</p>
+          <p>, {data?.sys.country}</p>
+        </div>
+
         {/* <p>, {data?.timezone}</p> */}
+        <div>
+          <span>{getWeekDay(data ? data?.dt : 0)}</span>
+          <span>, {getTime(data ? data?.dt : 0)}</span>
+        </div>
       </div>
 
-      <p className="font-semibold text-slate-500">
+      <p className=" text-slate-500">
         {data?.coord.lon}, {data?.coord.lat}
       </p>
     </div>

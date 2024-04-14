@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import SearchCity from "./SearchCity";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { setTempType } from "../redux/appSlice";
@@ -11,7 +10,7 @@ const Header = () => {
       <Logo />
       <SearchCity />
       <SelectTemperature />
-      {/* <HeaderLinks /> */}
+      <HeaderLinks />
     </div>
   );
 };
@@ -28,12 +27,8 @@ const Logo = () => {
 const HeaderLinks = () => {
   const link: { title: string; to: string }[] = [
     {
-      title: "City",
+      title: "Cities",
       to: "/",
-    },
-    {
-      title: "Weather",
-      to: "/weather",
     },
   ];
   return (

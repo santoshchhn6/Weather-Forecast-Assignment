@@ -29,7 +29,7 @@ const Forecast = ({ lat, lon }: Props) => {
   return (
     <div className="w-[40rem]  p-[2rem]  rounded-[2rem] bg-slate-300">
       <div className="flex justify-between">
-        <h1 className="text-3xl font-semibold">This Week</h1>
+        <h1 className="text-3xl font-semibold">Week Forecast</h1>
         <SelectTime />
       </div>
       {weekForecastWithTime?.map((weekDay, index) => (

@@ -1,13 +1,14 @@
 import { useTable } from "react-table";
 import { COLUMNS } from "./column.js";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { RootState } from "../../redux/store.js";
-import { useMemo } from "react";
+import {  useMemo} from "react";
 import { useNavigate } from "react-router-dom";
 
 const LocationTable = () => {
   const { locations } = useSelector((state: RootState) => state.locations);
   const navigate = useNavigate();
+
   const columns = useMemo(() => COLUMNS, []);
   const tableData = useMemo(
     () =>
@@ -21,7 +22,6 @@ const LocationTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    // footerGroups,
     rows,
     prepareRow,
   } = useTable({
@@ -36,7 +36,10 @@ const LocationTable = () => {
   };
 
   return (
-    <div className="w-[100%] h-[400px] bg-slate-200  overflow-y-auto text-center">
+    <div
+      // ref={containerRef}
+      className="w-[100%] h-[400px] bg-slate-200  overflow-y-auto text-center"
+    >
       <table {...getTableProps()} className="w-full text-slate-800">
         <thead className="bg-slate-300">
           {headerGroups.map((headerGroup) => (
